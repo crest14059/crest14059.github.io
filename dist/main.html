@@ -1,0 +1,139 @@
+<div ng-controller="MainController" class="row">
+		 <div class="page-header">
+  			<h1 class="text-center"><b>Epic Seven Combat Power Calculator</b> <small class="text-center"> <p>u/yufine-throwaway </p></small></h1>	
+		 </div>
+
+     	 <div class="col-md-12" style="margin:50px 50px 50px 50px">
+			<div class="form-group">
+    			<label>Attack</label>
+    			<input type="number" ng-model="atk" class="form-control" id="attack" placeholder="0">
+  			</div>
+
+			<div class="form-group">
+    			<label>Defense</label>
+    			<input type="number" ng-model="def" class="form-control" id="defense" placeholder="0">
+  			</div>
+		 
+			<div class="form-group">
+    			<label>HP</label>
+    			<input type="number" ng-model="hp" class="form-control" id="HP" placeholder="0">
+  			</div>
+		 
+			<div class="form-group">
+    			<label>Speed</label>
+    			<input type="number" ng-model="spd" class="form-control" id="speed" placeholder="0">
+  			</div>
+		
+			
+			<div class="form-group">
+    			<label>Crit Rate (eg. 76% = 0.76)</label>
+    			<input type="number" ng-model="crt" class="form-control" id="critr" placeholder="0">
+  			</div>
+
+			<div class="form-group">
+    			<label>Crit Damage (eg. 205% = 2.05)</label>
+    			<input type="number" ng-model="cdmg" class="form-control" id="critd" placeholder="0">
+  			</div>
+		
+			<div class="form-group">
+    			<label>Effectiveness (eg. 50% = 0.5)</label>
+    			<input type="number" ng-model="eff" class="form-control" id="eff" placeholder="0">
+  			</div>
+
+			<div class="form-group">
+    			<label>Resistance (eg. 50% = 0.5)</label>
+    			<input type="number" ng-model="res" class="form-control" id="res" placeholder="0">
+  			</div>
+
+			<div class="form-group">
+				<label>Artifact Grade</label>
+             	<select id = "myList" ng-model="artg" class="form-control" style="color:black;">
+               		<option value = "3">3 Star</option>
+               		<option value = "4">4 Star</option>
+               		<option value = "5">5 Star</option>
+				</select>	
+			</div> 
+		 
+			<div style="padding-top:12px;" class="form-group">
+				<label>Artifact Skill Level</label>
+             	<select id = "myList" ng-model="artlvl" class="form-control" style="color:black;">
+               		<option value = "1">1</option>
+               		<option value = "2">2</option>
+               		<option value = "3">3</option>
+               		<option value = "4">4</option>
+               		<option value = "5">5</option>	
+               		<option value = "6">6</option>
+               		<option value = "7">7</option>
+               		<option value = "8">8</option>
+               		<option value = "9">9</option>
+               		<option value = "10">10</option>
+					<option value = "11">11</option>
+				</select>	
+			</div> 
+			
+			<div style="padding-top:12px" class="checkbox form-group">
+    			<label>
+      				<input ng-model="has_exc_equip" type="checkbox"> Has Exclusive Equipment?
+    			</label>
+  			</div>
+			
+			<div style="padding-top:12px" class="checkbox form-group">
+    			<label>
+      				<input ng-model="has_passive" type="checkbox"> Has Passive Skill?
+    			</label>
+  			</div>
+			
+			<div style="padding-top:12px;" ng-show="has_passive">
+				<label>Passive Skill Level (If not mola'd Passive skill level is 0)</label>
+             	<select  ng-model="passive_sk_up" class="form-control" style="color:black;" default="0">
+               		<option value = "0">0</option>
+					<option value = "1">1</option>
+               		<option value = "2">2</option>
+               		<option value = "3">3</option>
+               		<option value = "4">4</option>
+               		<option value = "5">5</option>	
+               		<option value = "6">6</option>
+               		<option value = "7">7</option>
+               		<option value = "8">8</option>
+               		<option value = "9">9</option>
+				</select>	
+			</div> 
+
+			<button style="margin-top:12px;min-height:50px; font-size:30px;" class="btn btn-primary form-control" ng-click="calc()"  type="button"><b>Calculate</b></button>
+			
+			<div class="well">Does not factor in Specialty Change CP bonues from rune upgrades.</div>
+
+			<div class="panel panel-default" ng-show="show_result">
+  				<div class="panel-body">
+    				<h1>Result: {{ result | number }}</h2>
+  				</div>
+			</div>
+
+			<div class="panel panel-default" style="padding-top:24px;">
+  				
+  				<div class="panel-heading"><h2>Current Skill Up Selection</h2><small><p>Click skill to remove.</p></small></div>
+  				<div class="panel-body">
+    			
+					<div class="row">
+						<div ng-repeat="sk in skill_ups" class="col-md-3" style="padding-top:12px;">
+  							<button style="color:white;font-weight:bold;" ng-click="remove_skill_up(sk)" class="btn btn-success">{{sk[0]}}</button>
+						</div>
+					</div>
+
+  				</div>
+				
+				<div class="panel-heading"><h2>Skill Up Select</h2><small><p>Click skill to add.</p></div>
+  				<div class="panel-body">
+    			
+					<div class="row">
+						<div ng-repeat="sk in skill_up_list" class="col-md-3" style="padding-top:12px;">
+  							<button style="color:white;font-weight:bold;" ng-click="add_skill_up(sk)" class="btn btn-primary">{{sk[0]}}</button>
+						</div>
+					</div>
+
+  				</div>
+			</div>		
+		
+		 </div>
+      
+</div>
