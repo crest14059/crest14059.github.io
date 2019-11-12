@@ -1,16 +1,15 @@
-var jiffApp = angular.module('jiffApp', [
-	"ngRoute",
-	"dashboard"
-]); 
+/*
+ * Setup Angular App
+ */
+angular.module('CPApp',
+               ['ngRoute', 'main']) 
+  .config(['$locationProvider','$routeProvider',
+           function($locationProvider, $routeProvider) {
 
-jiffApp.config(['$locationProvider' ,'$routeProvider',
-    function config($locationProvider, $routeProvider) {
-      $locationProvider.hashPrefix('!');
+             $routeProvider.
+               when('/', {
+                 templateUrl: 'dist/main.html',
+                 controller: 'MainController'
+               }).otherwise({redirectTo: '/'}); 
 
-      $routeProvider.
-        when('/dashboard', {
-          template: '<dashboard></dashboard>'
-        }).
-        otherwise('/dashboard');
-    }
-]);
+           }]);
