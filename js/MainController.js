@@ -109,7 +109,7 @@ function mainController($scope) {
 			}
 		}
 		
-		if ($scope.has_pasive) {
+		if ($scope.has_passive) {
 			SK_multi = SK_multi + passive[$scope.passive_sk_up];
 		}
 		
