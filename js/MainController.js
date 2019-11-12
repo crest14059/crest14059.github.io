@@ -18,7 +18,7 @@ function mainController($scope) {
 	
 	$scope.skill_up_list = [
 		["+5% chance of inflicting bleeding", 0.004],	
-		["+10% effect chance", 0.008],
+		//["+10% effect chance", 0.008],
 		//["+10% effect chance", 0.01],	
 		//["+5% effect chance", 0.006],
 		["+10% provoke chance", 0.008],	
